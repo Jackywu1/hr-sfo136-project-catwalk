@@ -1,0 +1,20 @@
+{
+  "name": "hr-sfo136-project-catwalk",
+  "version": "1.0.0",
+  "description": "Front-end capstone project for Hack Reactor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/double-o-sevenly/hr-sfo136-project-catwalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/double-o-sevenly/hr-sfo136-project-catwalk/issues"
+  },
+  "homepage": "https://github.com/double-o-sevenly/hr-sfo136-project-catwalk#readme"
+}
