@@ -6,7 +6,7 @@ function App() {
       <header className="App-header">
 
         <h1>
-        Front-end capstone project for Hack Reactor
+        Front-end capstone project for Hack Reactor - New line
         </h1>
 
         <p style={{width: '600px', margin: 'auto'}}>
