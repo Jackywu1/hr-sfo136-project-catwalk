@@ -4,7 +4,8 @@
   "description": "Front-end capstone project for Hack Reactor",
   "private": true,
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
     "start": "nodemon server/index.js",
     "test": "jest --passWithNoTests"
   },
