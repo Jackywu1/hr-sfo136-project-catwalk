@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 const axios = require('axios');
 const express = require('express');
 const path = require('path');
@@ -18,18 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   atelier[req.method.toLowerCase()](req.originalUrl, req.body)
-    .then((response) => next({ error: null, response }))
-    .catch((error) => next({ error, response: null }));
-});
-
-app.use(({ error, response }, req, res, next) => {
-  if (error) {
-    res.status(error.response.status).send(error.message);
-  } else {
-    res.status(response.status).send(response.data);
-  }
+    .then((response) => res.status(response.status).send(response.data))
+    .catch((error) => res.status(error.response.status).send(error.message));
 });
 
 app.listen(port, () => {
