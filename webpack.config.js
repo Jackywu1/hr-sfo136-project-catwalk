@@ -32,6 +32,7 @@ module.exports = {
                   version: '^7.14.8',
                 },
               ],
+              ['babel-plugin-styled-components'],
             ],
           },
         },
