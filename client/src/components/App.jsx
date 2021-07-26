@@ -18,19 +18,11 @@ export default function App() {
       api.getProductInfo(product.id)
         .then(({ data }) => setProductInfo(data))
         .catch((error) => console.error(error));
-    }
-  }, [product]);
 
-  useEffect(() => {
-    if (product.id) {
       api.getReviews(product.id, 'newest')
         .then(({ data }) => setReviews(data))
         .catch((error) => console.error(error));
-    }
-  }, [product]);
 
-  useEffect(() => {
-    if (product.id) {
       api.getReviewsMeta(product.id)
         .then(({ data }) => setReviewsMeta(data))
         .catch((error) => console.error(error));
