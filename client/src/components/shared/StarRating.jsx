@@ -28,7 +28,7 @@ const StarsOuter = styled.div`
 `;
 
 export default function StarRating({ color, rating, size }) {
-  let normalizedRating = (Math.round(rating * 4) / 4).toFixed(2);
+  let normalizedRating = (Math.round(rating * 4) / 4);
   normalizedRating += (normalizedRating % 1 === 0.25) ? 0.08 : 0;
   normalizedRating -= (normalizedRating % 1 === 0.75) ? 0.08 : 0;
   return (
