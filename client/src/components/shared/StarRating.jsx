@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { math } from '../../helpers';
 import styled from 'styled-components';
+import { math } from '../../helpers';
 
 const StarsOuter = styled.div`
   color: var(--color);
@@ -31,8 +31,8 @@ const StarsInner = styled.div`
 export default function StarRating({ color, rating, size }) {
   const normalizedRating = math.normalizeRating(rating);
   return (
-    <StarsOuter className="StarsOuter" style={{ '--size': size, '--color': color }}>
-      <StarsInner className="StarsInner" style={{ '--rating': normalizedRating }} />
+    <StarsOuter data-testid="StarsOuter" style={{ '--size': size, '--color': color }}>
+      <StarsInner data-testid="StarsInner" style={{ '--rating': normalizedRating }} />
     </StarsOuter>
   );
 }
@@ -46,4 +46,4 @@ StarRating.propTypes = {
 StarRating.defaultProps = {
   color: 'black',
   size: '1rem',
-}
+};
