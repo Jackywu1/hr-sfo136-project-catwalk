@@ -25,4 +25,16 @@ module.exports = {
   ],
   rules: {
   },
+  overrides: [
+    {
+      files: [
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[tj]s?(x)',
+      ],
+      extends: [
+        'plugin:jest-dom/recommended',
+        'plugin:testing-library/react',
+      ]
+    },
+  ],
 };
