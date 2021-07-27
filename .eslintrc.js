@@ -3,11 +3,11 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    'jest/globals': true,
   },
   extends: [
     'airbnb',
-    'airbnb/hooks'
+    'airbnb/hooks',
+    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -19,6 +19,15 @@ module.exports = {
   plugins: [
   ],
   rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'no-console': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        message: 'Unexpected property on console object was called',
+      },
+    ],
   },
   overrides: [
     {
@@ -29,7 +38,7 @@ module.exports = {
       extends: [
         'plugin:jest-dom/recommended',
         'plugin:testing-library/react',
-      ]
+      ],
     },
   ],
 };
