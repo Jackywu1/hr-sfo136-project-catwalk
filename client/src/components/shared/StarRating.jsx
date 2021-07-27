@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { math } from '../../helpers';
 import styled from 'styled-components';
 
 const StarsOuter = styled.div`
@@ -13,8 +14,8 @@ const StarsOuter = styled.div`
     content: '☆☆☆☆☆';
   }
   `;
-  
-  const StarsInner = styled.div`
+
+const StarsInner = styled.div`
   left: 0;
   overflow: hidden;
   position: absolute;
@@ -28,9 +29,7 @@ const StarsOuter = styled.div`
 `;
 
 export default function StarRating({ color, rating, size }) {
-  let normalizedRating = (Math.round(rating * 4) / 4);
-  normalizedRating += (normalizedRating % 1 === 0.25) ? 0.08 : 0;
-  normalizedRating -= (normalizedRating % 1 === 0.75) ? 0.08 : 0;
+  const normalizedRating = math.normalizeRating(rating);
   return (
     <StarsOuter className="StarsOuter" style={{ '--size': size, '--color': color }}>
       <StarsInner className="StarsInner" style={{ '--rating': normalizedRating }} />
@@ -39,7 +38,12 @@ export default function StarRating({ color, rating, size }) {
 }
 
 StarRating.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   rating: PropTypes.number.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
 };
+
+StarRating.defaultProps = {
+  color: 'black',
+  size: '1rem',
+}
