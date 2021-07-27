@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     'airbnb',
     'airbnb/hooks',
-    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -36,6 +35,7 @@ module.exports = {
         '**/?(*.)+(spec|test).[tj]s?(x)',
       ],
       extends: [
+        'plugin:jest/recommended',
         'plugin:jest-dom/recommended',
         'plugin:testing-library/react',
       ],
