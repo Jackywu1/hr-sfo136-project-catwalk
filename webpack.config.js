@@ -15,6 +15,7 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: { helpers$: path.join(SRC_DIR, 'helpers', 'index.js') },
     extensions: ['*', '.js', '.jsx'],
   },
   output: {

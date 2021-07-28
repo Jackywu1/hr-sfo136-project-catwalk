@@ -12,7 +12,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: [
@@ -41,4 +41,9 @@ module.exports = {
       ],
     },
   ],
+  settings: {
+    'import/resolver': {
+      webpack: 'webpack.config.js',
+    },
+  },
 };

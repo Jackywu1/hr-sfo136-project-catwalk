@@ -1,2 +1,2 @@
-export { default as api } from './api';
-export { default as math } from './math';
+module.exports.api = require('./api');
+module.exports.math = require('./math');
