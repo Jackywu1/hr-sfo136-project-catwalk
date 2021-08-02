@@ -15,5 +15,6 @@ module.exports = {
       },
     ],
     'babel-plugin-styled-components',
+    '@babel/plugin-syntax-dynamic-import',
   ],
 };

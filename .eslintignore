@@ -1,5 +1,5 @@
-# Webpack bundle file
-bundle.js
+# Webpack bundle files
+*bundle.js
 
 # Jest configuration file
 jest.config.js
