@@ -6,6 +6,8 @@ import picSelected from './scripts/picSelected.js';
 import ImageModal from './scripts/ImageModal.js';
 import Zoom from './scripts/zoomImage.js';
 import { Thumbnails } from './styles/Container.style';
+import '../../../../config.js'
+import { api } from '../../helpers';
 import { PortalImg, ImgZoom } from './styles/Container.style';
 import { BsFullscreen } from 'react-icons/bs';
 import { ImArrowLeft, ImArrowRight } from 'react-icons/im';
@@ -29,7 +31,6 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
         let i = 0;
         setStyleProduct([]);
         res.data.results[styleIndex].photos.map((item) =>
-          //item.url = item.url.replace(/&w=\d+/, "&w=10");
           setStyleProduct((prevState) => [
             ...prevState,
             { id: i++, thumbnail: item.thumbnail_url, url: item.url },
@@ -39,6 +40,7 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
       .catch((error) => {
         console.error(error);
       });
+
   }, [styleIndex]);
 
   const carrousel = (dir) => {
@@ -118,8 +120,9 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
         <ImArrowRight style={{ color: 'white' }} />
       </span>
       <Thumbnails className="thumbnails">
-        {styleProduct.map((item) => (
+        {styleProduct.map((item, index) => (
           <img
+          key={index}
             style={{
               display: 'block',
               marginBottom: '15px',

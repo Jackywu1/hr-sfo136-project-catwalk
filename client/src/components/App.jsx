@@ -5,10 +5,11 @@ import React, {
   useState,
 } from 'react';
 import styled from 'styled-components';
+import Overview from './Overview/Overview.js'
 import { api } from 'helpers';
 import { AppContext } from './Contexts';
 
-const ProductList = lazy(() => import('./related/ProductList'));
+// const ProductList = lazy(() => import('./related/ProductList'));
 
 const randomId = Math.floor((Math.random() * (26177 - 25167 + 1))) + 25167;
 
@@ -50,14 +51,9 @@ export default function App() {
   }, [appContext]);
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <Overview />
-    </div>
-=======
     <AppContext.Provider value={{ appContext, setAppContext }}>
       <Suspense fallback={<div />}>
-        {appContext.loading ? <div /> : (
+        {/* {appContext.loading ? <div /> : (
           <StyledApp data-testid="App">
             <ProductList
               items={appContext.relatedProducts}
@@ -74,9 +70,11 @@ export default function App() {
               cardType="outfit-product"
             />
           </StyledApp>
-        )}
+        )} */}
+         <div className="App">
+      <Overview />
+    </div>
       </Suspense>
     </AppContext.Provider>
->>>>>>> main
   );
 }
