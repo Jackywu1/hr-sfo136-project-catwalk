@@ -27,6 +27,9 @@ module.exports = {
         message: 'Unexpected property on console object was called',
       },
     ],
+    'react/prop-types': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    'max-len': 'off',
   },
   overrides: [
     {
