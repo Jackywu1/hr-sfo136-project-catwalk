@@ -10,3 +10,5 @@ node_modules/
 
 # Webpack bundle files
 *bundle.js*
+
+config.js
