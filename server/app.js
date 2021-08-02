@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use((req, res) => {
   atelier[req.method.toLowerCase()](req.originalUrl, req.body)
     .then((response) => res.status(response.status).send(response.data))
-    .catch((error) => res.status(error.response.status).send(error.message));
+    .catch(() => res.status(400));
 });
 
 module.exports = app;

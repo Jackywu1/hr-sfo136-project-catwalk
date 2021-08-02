@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Overview from './Overview/Overview.js'
 import { api } from '../helpers';
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {console.log(product, productInfo, reviews, reviewsMeta)}
+      <Overview />
     </div>
   );
 }
