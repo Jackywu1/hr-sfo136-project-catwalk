@@ -26,7 +26,7 @@ export const Navbar = styled.div`
   min-height: 50px;
   background-color: #525252;
   max-width: 1300px;
-  margin: 30 auto;
+  margin: 30px auto;
   margin-top: 0;
   display: flex;
   justify-content: space-between;

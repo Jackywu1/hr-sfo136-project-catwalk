@@ -14,7 +14,6 @@ const App = () => {
   const [toggleWiden, setToggleWiden] = useState(true);
 
   const changeStyle = (styleid) => {
-    //console.log(styleid);
     setStyleIndex(styleid);
   };
 

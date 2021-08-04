@@ -20,7 +20,6 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-console': 'off',
-    "browser": true,
     'no-restricted-syntax': [
       'error',
       {
@@ -28,6 +27,9 @@ module.exports = {
         message: 'Unexpected property on console object was called',
       },
     ],
+    'react/prop-types': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    'max-len': 'off',
   },
   overrides: [
     {
