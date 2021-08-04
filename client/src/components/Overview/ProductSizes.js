@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import $ from "jquery";
+import axios from "axios";
 
 const ProductSizes = ({ productID, styleIndex }) => {
   const [sizes, setSizes] = useState([]);
@@ -16,7 +16,7 @@ const ProductSizes = ({ productID, styleIndex }) => {
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/styles`,
         {
           headers: {
-            Authorization: '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',
+            Authorization: "THE_API_KEY",
           },
         }
       )
@@ -48,18 +48,22 @@ const ProductSizes = ({ productID, styleIndex }) => {
     <div>
       <div className="selectSize">
         <select
-          style={{ padding: '10px 10px', marginRight: '20px' }}
+          style={{ padding: "10px 10px", marginRight: "20px" }}
           onChange={matchQuantity}
         >
           <option>SELECT SIZE</option>
           {sizes.map((elm, index) => (
-            <option key={index} value={elm.quantity}>{elm.size}</option>
+            <option key={index} value={elm.quantity}>
+              {elm.size}
+            </option>
           ))}
         </select>
 
-        <select style={{ padding: '10px 10px' }} onChange={matchQuantity}>
+        <select style={{ padding: "10px 10px" }} onChange={matchQuantity}>
           {quantity.map((elm, index) => (
-            <option key={index} value={elm}>{elm}</option>
+            <option key={index} value={elm}>
+              {elm}
+            </option>
           ))}
         </select>
       </div>
