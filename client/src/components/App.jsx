@@ -15,25 +15,25 @@ const randomId = Math.floor((Math.random() * (26177 - 25167 + 1))) + 25167;
 const StyledApp = styled.div`
   margin: 0 15%;
 `;
+
 export default function App() {
   const [appContext, setAppContext] = useState({
     loading: true,
-    productId: randomId,
-    userOutfit: [],
-    productInfo: null,
-    productStyles: null,
+    productInfo: { id: null },
+    productStyles: {},
     relatedProducts: [],
-    reviewsMeta: null,
+    reviewsMeta: {},
+    userOutfit: JSON.parse(window.localStorage.getItem('userOutfit')) || [],
   });
 
   useEffect(() => {
     if (!appContext.loading) { setAppContext({ ...appContext, loading: true }); }
 
     Promise.all([
-      api.getProductInfo(appContext.productId),
-      api.getProductStyles(appContext.productId),
-      api.getRelatedProducts(appContext.productId),
-      api.getReviewsMeta(appContext.productId),
+      api.getProductInfo(randomId),
+      api.getProductStyles(randomId),
+      api.getRelatedProducts(randomId),
+      api.getReviewsMeta(randomId),
     ]).then((responses) => {
       setAppContext({
         ...appContext,
@@ -45,9 +45,9 @@ export default function App() {
       });
     }).catch((error) => {
       setAppContext({ ...appContext, loading: true });
-      console.error(error);
+      console.error(error.message);
     });
-  }, [appContext]);
+  }, []);
 
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>
@@ -55,18 +55,18 @@ export default function App() {
         {appContext.loading ? <div /> : (
           <StyledApp data-testid="App">
             <ProductList
+              cardType="related-product"
               items={appContext.relatedProducts}
-              listWrapperId="related-products-wrapper"
               listId="related-products"
               listTitle="RELATED PRODUCTS"
-              cardType="related-product"
+              listWrapperId="related-products-wrapper"
             />
             <ProductList
+              cardType="outfit-product"
               items={appContext.userOutfit}
-              listWrapperId="user-outfit-wrapper"
               listId="user-outfit"
               listTitle="YOUR OUTFIT"
-              cardType="outfit-product"
+              listWrapperId="user-outfit-wrapper"
             />
           </StyledApp>
         )}
