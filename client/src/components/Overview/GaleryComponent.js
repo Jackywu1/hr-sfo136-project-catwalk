@@ -6,8 +6,6 @@ import picSelected from "./scripts/picSelected.js";
 import ImageModal from "./scripts/ImageModal.js";
 import Zoom from "./scripts/zoomImage.js";
 import { Thumbnails } from "./styles/Container.style";
-import "../../../../config.js";
-import { api } from "../../helpers";
 import { PortalImg, ImgZoom } from "./styles/Container.style";
 import { BsFullscreen } from "react-icons/bs";
 import { ImArrowLeft, ImArrowRight } from "react-icons/im";
@@ -19,14 +17,7 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/styles`,
-        {
-          headers: {
-            Authorization: "THE_API_KEY",
-          },
-        }
-      )
+      .get("/styles")
       .then((res) => {
         let i = 0;
         setStyleProduct([]);
@@ -75,8 +66,9 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div id="GalleyContainer" style={{ position: "relative" }}>
       <span
+        id="fullScreenIcon"
         style={{
           position: "absolute",
           top: "20px",
@@ -93,7 +85,7 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
       <span
         style={{
           position: "absolute",
-          top: "50%",
+          top: "45%",
           left: "80px",
           fontSize: "xx-large",
           textShadow: "3px 1px 0px #ffffffed, 5px 0px 0px rgb(0 0 0 / 15%)",
@@ -107,7 +99,7 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
       <span
         style={{
           position: "absolute",
-          top: "50%",
+          top: "45%",
           right: "20px",
           fontSize: "xx-large",
           textShadow: "3px 1px 0px #ffffffed, 5px 0px 0px rgb(0 0 0 / 15%)",
@@ -150,7 +142,6 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
           textShadow:
             "rgba(0,0,0, 0.4) 0px 5px, rgba(0,0,0, 0.3) 0px 10px, rgba(0,0,0, 0.2) 0px 15px, rgba(0,0,0, 0.1) 0px 20px, rgba(0,0,0, 0.05) 0px 25px",
         }}
-        // onClick={picSelected.ScrollThumbnails}
         onClick={scrollFnTop}
         className="scrollClassTop"
       >
@@ -167,15 +158,16 @@ const GaleryComponent = ({ productID, styleIndex, widenFn }) => {
           textShadow:
             "rgb(0 0 0 / 40%) 0px -5px, rgb(0 0 0 / 30%) 0px -10px, rgb(0 0 0 / 20%) 0px -15px, rgb(0 0 0 / 10%) 0px -20px, rgb(0 0 0 / 5%) 0px -25px",
         }}
-        // onClick={picSelected.ScrollThumbnails}
         onClick={scrollFn}
         className="scrollClass"
+        id="scrollDown"
       >
         ▼
       </span>
-      <div style={{ display: "flex", maxHeight: "600px" }}>
+      <div className="imgGalery" style={{ display: "flex", height: "80vh" }}>
         {styleProduct[picIndex] && (
           <img
+            className="imgWiden"
             width="100%"
             height="600px"
             src={styleProduct[picIndex].url.replace(/&w=\d+/, "&w=10")}

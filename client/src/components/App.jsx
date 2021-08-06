@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
 import Overview from "./Overview/Overview.js";
 import { api } from "helpers";
 import { AppContext } from "./Contexts";
-=======
-import React, { useState, useEffect } from 'react';
-import { api } from '../helpers';
->>>>>>> parent of 8f4f1a1 (Integrate the Overview code)
 
 // const ProductList = lazy(() => import('./related/ProductList'));
 

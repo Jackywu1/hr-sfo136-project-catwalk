@@ -6,14 +6,7 @@ const InfoProduct = ({ productID }) => {
   var arr = [];
   useEffect(() => {
     axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}`,
-        {
-          headers: {
-            Authorization: "THE_API_KEY",
-          },
-        }
-      )
+      .get("/product")
       .then((res) => {
         setProductInfo({
           category: res.data.category,
