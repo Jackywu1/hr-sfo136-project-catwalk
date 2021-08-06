@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { math } from '../../helpers';
+import { math } from 'helpers';
+import { CardContext } from '../Contexts';
 
 const StarsOuter = styled.div`
   color: var(--color);
@@ -13,7 +14,7 @@ const StarsOuter = styled.div`
   ::before {
     content: '☆☆☆☆☆';
   }
-  `;
+`;
 
 const StarsInner = styled.div`
   left: 0;
@@ -28,10 +29,14 @@ const StarsInner = styled.div`
   }
 `;
 
-export default function StarRating({ color, rating, size }) {
-  const normalizedRating = math.normalizeRating(rating);
+export default function StarRating({ color, size }) {
+  const { cardContext: card } = useContext(CardContext);
+
+  const averageRating = math.getAverageRating(card.reviewsMeta.ratings);
+  const normalizedRating = math.normalizeRating(averageRating);
+
   return (
-    <StarsOuter data-testid="StarsOuter" style={{ '--size': size, '--color': color }}>
+    <StarsOuter data-testid="StarsOuter" style={{ '--color': color, '--size': size }}>
       <StarsInner data-testid="StarsInner" style={{ '--rating': normalizedRating }} />
     </StarsOuter>
   );
@@ -39,7 +44,6 @@ export default function StarRating({ color, rating, size }) {
 
 StarRating.propTypes = {
   color: PropTypes.string,
-  rating: PropTypes.number.isRequired,
   size: PropTypes.string,
 };
 
