@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const api = axios.create({ baseURL: 'http://localhost:3000' });
+const api = axios.create();
 
 module.exports = {
   getAllProducts: async (page = 1, count = 5) => {

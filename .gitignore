@@ -10,3 +10,6 @@ node_modules/
 
 # Webpack bundle files
 *bundle.js*
+
+# AWS key
+*.pem
