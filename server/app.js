@@ -14,9 +14,9 @@ app.use((req, res) => {
   atelier[req.method.toLowerCase()](req.originalUrl, req.body)
     .then((response) => res.status(response.status).send(response.data))
     .catch((error) => (
-      (error.response && error.message)
+      (error.response)
         ? res.status(error.response.status).send(error.message)
-        : res.status(500).send(error)
+        : res.status(500).send(error.message)
     ));
 });
 
